@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class template implements Runnable {
+	public static final String taskname = "template";
+	
 	public StringTokenizer strtok;
 	public BufferedReader inr;
 	public PrintWriter out;
@@ -9,8 +11,6 @@ public class template implements Runnable {
 	public static void main(String[] args) {
 		new Thread(new template()).start();
 	}
-
-	public static final String taskname = "template";
 
 	public void run() {
 		Locale.setDefault(Locale.US);
