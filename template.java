@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class template implements Runnable {
-	public static final String taskname = "template";
+	public static final String taskname = template.class.getName();
 	
 	public StringTokenizer strtok;
 	public BufferedReader inr;
