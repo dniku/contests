@@ -49,35 +49,30 @@ public class alg {
 	}
 
 	// Array algorithms
+	// first is inclusive, last is exclusive
 
-	public static int lower_bound(long[] list, int first, int last, long val) {
-		int len = last - first;
-		int half;
-		int middle;
-		while (len > 0) {
-			half = len >>> 1;
-			middle = first + half;
-			if (list[middle] < val) {
+	private static int lowerBound(int[] a, int first, int last, int val) {
+		while (first < last) {
+			int half = (last - first) >>> 1;
+			int middle = first + half;
+			if (a[middle] < val) {
 				first = middle + 1;
-				len = len - half - 1;
-			} else
-				len = half;
+			} else {
+				last = middle;
+			}
 		}
 		return first;
 	}
 
-	public static int upper_bound(long[] list, int first, int last, long val) {
-		int len = last - first;
-		int half;
-		int middle;
-		while (len > 0) {
-			half = len >>> 1;
-			middle = first + half;
-			if (val < list[middle])
-				len = half;
-			else {
+	private static int upperBound(int[] a, int first, int last, int val) {
+		while (first < last) {
+			int half = (last - first) >>> 1;
+			int middle = first + half;
+			if (a[middle] <= val) {
 				first = middle + 1;
-				len = len - half - 1;
+			}
+			else {
+				last = middle;
 			}
 		}
 		return first;
