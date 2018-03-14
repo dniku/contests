@@ -1,8 +1,17 @@
+#pragma comment(linker, "/stack:200000000")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+#pragma GCC optimize("Ofast")
+
 #define _USE_MATH_DEFINES
 #include <bits/stdc++.h>
 using namespace std;
 
+#ifndef ONLINE_JUDGE
 #define eprintf(...) fprintf(stderr, __VA_ARGS__)
+#else
+#define eprintf(...)
+#endif
+
 #define forn(i, n) for (size_t i = 0; i < (n); ++i)
 void timestamp(char const * const tag, bool absolute = false);
 
@@ -31,14 +40,20 @@ void timestamp(char const * const tag, bool absolute) {
 }
 
 int main() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr);
+
   timestamp("start");
-#ifdef DEV
-  string taskname = "";
-  string fnin = taskname + ".in";
+#ifndef ONLINE_JUDGE
+  string fncpp = __FILE__;
+  string fnbase = fncpp.substr(0, fncpp.find_last_of("."));
+  string fnin = fnbase + ".in";
   assert(freopen(fnin.c_str(), "r", stdin));
+  // string fnout = fnbase + ".out";
+  // freopen(fnout.c_str(), "w", stdout);
   timestamp("freopen()");
 #endif
-  
+
   read();
   timestamp("read()");
   solve();
