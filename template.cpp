@@ -1,4 +1,3 @@
-#pragma comment(linker, "/stack:200000000")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #pragma GCC optimize("Ofast")
 
@@ -6,7 +5,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifndef ONLINE_JUDGE
+#ifdef DEV
 #define eprintf(...) fprintf(stderr, __VA_ARGS__)
 #else
 #define eprintf(...)
@@ -44,7 +43,7 @@ int main() {
   std::cin.tie(nullptr);
 
   timestamp("start");
-#ifndef ONLINE_JUDGE
+#ifdef DEV
   string fncpp = __FILE__;
   string fnbase = fncpp.substr(0, fncpp.find_last_of("."));
   string fnin = fnbase + ".in";
